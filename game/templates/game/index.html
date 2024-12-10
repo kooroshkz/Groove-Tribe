@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Groove Tribe</title>
+</head>
+<body>
+    <h1>Welcome to Groove Tribe</h1>
+    <form id="start-form" method="POST" action="/create/">
+        <input type="text" name="nickname" placeholder="Enter your nickname" required />
+        <button type="submit">Start Session</button>
+    </form>
+
+    <form id="join-form" method="GET">
+        <input type="text" name="session_id" placeholder="Enter Session Code" required />
+        <input type="text" name="nickname" placeholder="Enter your nickname" required />
+        <button type="submit">Join Session</button>
+    </form>
+    <script>
+        const joinForm = document.getElementById('join-form');
+        joinForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const sessionId = joinForm.elements['session_id'].value;
+            const nickname = joinForm.elements['nickname'].value;
+            window.location.href = `/join/${sessionId}/?nickname=${nickname}`;
+        });
+    </script>
+    
+</body>
+</html>
